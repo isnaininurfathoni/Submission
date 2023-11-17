@@ -11,15 +11,44 @@ class FirstScreen extends StatefulWidget {
 }
 
 class _FirstScreenState extends State<FirstScreen> {
+  int _counter = 0;
+
+  void _incrementCounter() {
+    setState(() {
+      _counter++;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Aplikasi Submission"),
+        centerTitle: true,
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Center(
             child: Column(
               children: [
-                Image.asset('assets/images/farm.jpg'),
+                SizedBox(
+                  height: 50,
+                ),
+                Image.asset('assets/images/dicoding.png'),
+                SizedBox(
+                  height: 50,
+                ),
+                Text('Saya belajar flutter di DIcoding '),
+                Text(
+                    'Dengan materi yang mudah dipahami serta mudah untuk diakses '),
+                Text('Ayo segera belajar di Dicoding'),
+                SizedBox(
+                  height: 20,
+                ),
+                Image.asset('assets/images/dicoding2.png'),
+                SizedBox(
+                  height: 50,
+                ),
                 ElevatedButton(
                   onPressed: () {
                     Navigator.push(
@@ -31,16 +60,29 @@ class _FirstScreenState extends State<FirstScreen> {
                       ),
                     );
                   },
-                  child: Text('Halaman Selanjutnya'),
+                  child: Text('Next'),
                 ),
-                SizedBox(
-                  height: 50,
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    const Text(
+                      'You have pushed the button this many times:',
+                    ),
+                    Text(
+                      '$_counter',
+                      style: Theme.of(context).textTheme.headline4,
+                    ),
+                  ],
                 ),
-                Text('NAMA : ISNAINI NUR FATHONI '),
               ],
             ),
           ),
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _incrementCounter,
+        tooltip: 'Increment',
+        child: const Icon(Icons.add),
       ),
     );
   }
